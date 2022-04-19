@@ -8,6 +8,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/task1404/comment" element={<TableComment />} />
+        <Route path="https://novikovm18.github.io/task1404/comment" element={<TableComment />} />
         <Route path="*" element={<TableRegion />} />
       </Routes>
     </div>
