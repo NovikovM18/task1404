@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -9,7 +9,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import data from './testData';
-import TableComment from './TableComment';
+
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -59,19 +59,17 @@ const rows = [
 ];
 
 export default function TableRegion() {
-  const [activeMod, setActiveMod] = useState(false);
-
   return (
-    <>
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
           <TableRow>
-          <StyledTableCell rowSpan={2}>Region</StyledTableCell>
+            <StyledTableCell rowSpan={2}>Region</StyledTableCell>
             <StyledTableCell align="center" colSpan={3}>2017</StyledTableCell>
             <StyledTableCell align="center" colSpan={3}>2018</StyledTableCell>
             <StyledTableCell align="center" colSpan={3}>2019</StyledTableCell>
           </TableRow>
+
           <TableRow>
             <StyledTableCell align="center">XX</StyledTableCell>
             <StyledTableCell align="center">YY</StyledTableCell>
@@ -84,12 +82,14 @@ export default function TableRegion() {
             <StyledTableCell align="center">ZZ</StyledTableCell>
           </TableRow>
         </TableHead>
-        <TableBody onClick={() => setActiveMod(true)}>
+        
+        <TableBody onClick={() => window.open('comment', 'comment', 'width=914, height=212')}>
           {rows.map((row) => (
             <StyledTableRow key={row.name}>
               <StyledTableCell component="th" scope="row">
                 {row.name}
               </StyledTableCell>
+
               <StyledTableCell align="center">{row.vals[0]}</StyledTableCell>
               <StyledTableCell align="center">{row.vals[1]}</StyledTableCell>
               <StyledTableCell align="center">{row.vals[2]}</StyledTableCell>
@@ -99,14 +99,10 @@ export default function TableRegion() {
               <StyledTableCell align="center">{row.vals[6]}</StyledTableCell>
               <StyledTableCell align="center">{row.vals[7]}</StyledTableCell>
               <StyledTableCell align="center">{row.vals[8]}</StyledTableCell>
-             
             </StyledTableRow>
           ))}
         </TableBody>
       </Table>
     </TableContainer>
-
-    <TableComment active={activeMod} setActive={setActiveMod}/>
-    </>
   );
 }

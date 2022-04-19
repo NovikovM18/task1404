@@ -10,7 +10,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import './TableComment.css'; 
+// import './TableComment.css'; 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -26,7 +26,6 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   '&:nth-of-type(odd)': {
     backgroundColor: theme.palette.action.hover,
   },
-  // hide last border
   '&:last-child td, &:last-child th': {
     border: 0,
   },
@@ -40,7 +39,7 @@ const rows = [
   createData(66, '12/12/12', 'Jo', 'lorem5'),
 ];
 
-export default function TableComment({active, setActive}) {
+export default function TableComment() {
   const data = new Date();
   const dataY = data.getFullYear();
   const dataM = data.getMonth();
@@ -76,95 +75,92 @@ export default function TableComment({active, setActive}) {
   }
 
   return (
-    <div className={active ? "modal active" : "modal"} onClick={() => setActive(false)}>
-      <div className={active ? "modal__content active" : "modal__content"} onClick={e => e.stopPropagation()}>
-        <TableContainer component={Paper}>
-          <form onSubmit={onFormSubmit}>
-          <Table sx={{ maxWidth: 900 }} aria-label="customized table">
-            <TableHead>
-              <TableRow>
-                <StyledTableCell align="center">value</StyledTableCell>
-                <StyledTableCell align="center">date</StyledTableCell>
-                <StyledTableCell align="center">user</StyledTableCell>
-                <StyledTableCell align="center">comment</StyledTableCell>
-                <StyledTableCell align="center">
-                  <Button onClick={() => setActive(false)} variant="contained" color="error">
-                    CLOSE
-                  </Button>
-                </StyledTableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {rows.map((row) => (
-                <StyledTableRow key={row.value * Math.random()}>
-                  <StyledTableCell align="center">{row.value}</StyledTableCell>
-                  <StyledTableCell align="center">{row.date}</StyledTableCell>
-                  <StyledTableCell align="center">{row.user}</StyledTableCell>
-                  <StyledTableCell sx={{ maxWidth: 300 }} align="center">{row.comment}</StyledTableCell>
-                  <StyledTableCell align="center"></StyledTableCell>
-                </StyledTableRow>
-              ))}
-            </TableBody>
-            
-            <TableHead>
-              <StyledTableRow>
-              
-                <StyledTableCell align="center">
-                  <TextField
-                    id="number"
-                    name="number"
-                    value={value}
-                    onChange={event => setValue(event.target.value)}
-                    required
-                    label="Value"
-                    type="number"
-                    sx={{ width: 200, }}
-                    InputLabelProps={{
-                      shrink: true,
-                    }}
-                  />
-                </StyledTableCell>
-                <StyledTableCell align="center">
-                    <p>DATE</p>
-                </StyledTableCell>
-                <StyledTableCell align="center">
-                  <TextField 
-                    id="name" 
-                    name="name"
-                    value={user}
-                    onChange={event => setUser(event.target.value)}
-                    required
-                    label="Name" 
-                    variant="outlined"
-                    sx={{ width: 200, }}
-                  />
-                </StyledTableCell>
-                <StyledTableCell align="center">
-                  <TextField
-                    id="comment"
-                    name="comment"
-                    value={comment}
-                    onChange={event => setComment(event.target.value)}
-                    required
-                    label="Comment"
-                    sx={{ width: 200, }}
-                    multiline
-                  />
-                </StyledTableCell>
-                <StyledTableCell align="center">
-                  <Button type="submit" variant="contained" color="success">
-                    ADD
-                  </Button>
-                </StyledTableCell>
-                
+    <TableContainer component={Paper}>
+      <form onSubmit={onFormSubmit}>
+        <Table sx={{ maxWidth: 900 }} aria-label="customized table">
+          <TableHead>
+            <TableRow>
+              <StyledTableCell align="center">value</StyledTableCell>
+              <StyledTableCell align="center">date</StyledTableCell>
+              <StyledTableCell align="center">user</StyledTableCell>
+              <StyledTableCell align="center">comment</StyledTableCell>
+              <StyledTableCell align="center">
+                <Button type="button" variant="contained" color="error" onClick={window.close}>
+                  CLOSE
+                </Button>
+              </StyledTableCell>
+            </TableRow>
+          </TableHead>
+
+          <TableBody>
+            {rows.map((row) => (
+              <StyledTableRow key={row.value * Math.random()}>
+                <StyledTableCell align="center">{row.value}</StyledTableCell>
+                <StyledTableCell align="center">{row.date}</StyledTableCell>
+                <StyledTableCell align="center">{row.user}</StyledTableCell>
+                <StyledTableCell sx={{ maxWidth: 300 }} align="center">{row.comment}</StyledTableCell>
+                <StyledTableCell align="center"></StyledTableCell>
               </StyledTableRow>
-              
-            </TableHead>
+            ))}
+          </TableBody>
           
-          </Table>
-          </form>
-        </TableContainer>
-      </div>
-    </div>
+          <TableHead>
+            <StyledTableRow>
+              <StyledTableCell align="center">
+                <TextField
+                  id="number"
+                  name="number"
+                  value={value}
+                  onChange={event => setValue(event.target.value)}
+                  required
+                  label="Value"
+                  type="number"
+                  sx={{ width: 200, }}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                />
+              </StyledTableCell>
+
+              <StyledTableCell align="center">
+                  <p>DATE</p>
+              </StyledTableCell>
+
+              <StyledTableCell align="center">
+                <TextField 
+                  id="name" 
+                  name="name"
+                  value={user}
+                  onChange={event => setUser(event.target.value)}
+                  required
+                  label="Name" 
+                  variant="outlined"
+                  sx={{ width: 200, }}
+                />
+              </StyledTableCell>
+
+              <StyledTableCell align="center">
+                <TextField
+                  id="comment"
+                  name="comment"
+                  value={comment}
+                  onChange={event => setComment(event.target.value)}
+                  required
+                  label="Comment"
+                  sx={{ width: 200, }}
+                  multiline
+                />
+              </StyledTableCell>
+
+              <StyledTableCell align="center">
+                <Button type="submit" variant="contained" color="success">
+                  ADD
+                </Button>
+              </StyledTableCell>
+            </StyledTableRow>
+          </TableHead>
+        </Table>
+      </form>
+    </TableContainer>
   );
 }
