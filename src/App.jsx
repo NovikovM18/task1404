@@ -8,6 +8,7 @@ function App() {
     <div className="App">
       {/* <TableRegion /> */}
       <Routes>
+        <Route path="/task1404/comment" element={<TableComment />} />
         <Route path="/comment" element={<TableComment />} />
         <Route path="*" element={<TableRegion />} />
       </Routes>
