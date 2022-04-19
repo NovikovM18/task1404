@@ -83,7 +83,7 @@ export default function TableRegion() {
           </TableRow>
         </TableHead>
         
-        <TableBody onClick={() => window.open('comment', 'comment', 'width=914, height=212, left=450, top=400',)}>
+        <TableBody onClick={() => window.open('/comment', 'commentTable', 'width=914,height=212,left=450,top=400',)}>
           {rows.map((row) => (
             <StyledTableRow key={row.name}>
               <StyledTableCell component="th" scope="row">
