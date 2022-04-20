@@ -7,8 +7,9 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/task1404" element={<TableRegion />} />
-        <Route path="/task1404/comment" element={<TableComment />} />
+        <Route path="/" element={<TableRegion />} />
+        <Route path="comment" element={<TableComment />} />
+
       </Routes>
     </div>
   );
