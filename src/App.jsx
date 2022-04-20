@@ -7,9 +7,8 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<TableRegion />} />
         <Route path="comment" element={<TableComment />} />
-
+        <Route exact path="/" element={<TableRegion />} />
       </Routes>
     </div>
   );
